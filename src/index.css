@@ -6,7 +6,7 @@
 
 .placeholder {
   position: absolute;
-  top: 197px;
+  top: 220px;
   padding-left: 8px;
 }
 
@@ -19,4 +19,8 @@
 #title {
   margin-bottom: 100px;
   align-self: center;
+}
+
+.heading-btn {
+  width: 100px;
 }
