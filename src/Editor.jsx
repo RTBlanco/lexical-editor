@@ -1,4 +1,4 @@
-import {$createTextNode, $getRoot, $getSelection} from 'lexical';
+import {$createTextNode, $getRoot, $getSelection, $isRangeSelection} from 'lexical';
 import {useEffect} from 'react';
 
 import {AutoFocusPlugin} from '@lexical/react/LexicalAutoFocusPlugin';
@@ -9,6 +9,7 @@ import {HistoryPlugin} from '@lexical/react/LexicalHistoryPlugin';
 import {LexicalErrorBoundary} from '@lexical/react/LexicalErrorBoundary';
 import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext';
 import {HeadingNode, $createHeadingNode} from "@lexical/rich-text"
+import {$setBlocksType} from "@lexical/selection"
 
 const theme = {
   // Theme styling goes here
@@ -24,18 +25,23 @@ function onError(error) {
   console.error(error);
 }
 
-function myHeadingPlugin() {
+function HeadingPlugin() {
   const [editor] = useLexicalComposerContext()
   const onClick = (e) => {
     editor.update(() => {
-      const root = $getRoot()
-      root.append($createHeadingNode('h1').append($createTextNode("Hello World")))
+      // const root = $getRoot()
+      // root.append($createHeadingNode('h1').append($createTextNode("Hello World")))
+      const selection = $getSelection();
+      if ($isRangeSelection(selection)) {
+        $setBlocksType(selection, () => $createHeadingNode("h1"))
+      
+      }
     })
-    return <button onClick={onClick}>Heading</button>
   }
+  return <button className="heading-btn" onClick={onClick}>Heading</button>
 }
 
-function Editor() {
+export default function Editor() {
   const initialConfig = {
     namespace: 'MyEditor',
     theme,
@@ -45,6 +51,7 @@ function Editor() {
 
   return (
     <LexicalComposer initialConfig={initialConfig}>
+      <HeadingPlugin />
       <RichTextPlugin
         contentEditable={
           <ContentEditable
@@ -61,4 +68,3 @@ function Editor() {
   );
 }
 
-export default Editor;
