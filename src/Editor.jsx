@@ -10,6 +10,8 @@ import {LexicalErrorBoundary} from '@lexical/react/LexicalErrorBoundary';
 import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext';
 import {HeadingNode, $createHeadingNode} from "@lexical/rich-text"
 import {$setBlocksType} from "@lexical/selection"
+import { INSERT_ORDERED_LIST_COMMAND, INSERT_UNORDERED_LIST_COMMAND, ListItemNode, ListNode } from "@lexical/list"
+import { ListPlugin } from '@lexical/react/LexicalListPlugin';
 
 const theme = {
   // Theme styling goes here
@@ -25,20 +27,53 @@ function onError(error) {
   console.error(error);
 }
 
+function ToolbarPlugin() {
+  // const [editor] = useLexicalComposerContext()
+
+  return(
+    <div className="toolbar-wrapper">
+      <HeadingPlugin />
+      <ListToolbarPlugin />
+    </div>
+  )
+}
+
+function ListToolbarPlugin() {
+  const [editor] = useLexicalComposerContext()
+  const onClick = (tag) => {
+    if ( tag === "ol") {
+      editor.dispatchCommand(INSERT_ORDERED_LIST_COMMAND, undefined);
+      return
+    }
+
+    editor.dispatchCommand(INSERT_UNORDERED_LIST_COMMAND, undefined)
+  }
+  // return<button className="heading-btn" onClick={onClick}>Heading</button>
+  return (
+    <>{["ol", "ul"].map(tag => (
+      <button key={tag} className="heading-btn" onClick={() => onClick(tag)}>{tag.toUpperCase()}</button>
+    ))}</>
+  )
+}
+
 function HeadingPlugin() {
   const [editor] = useLexicalComposerContext()
-  const onClick = (e) => {
+  const onClick = (tag) => {
     editor.update(() => {
       // const root = $getRoot()
       // root.append($createHeadingNode('h1').append($createTextNode("Hello World")))
       const selection = $getSelection();
       if ($isRangeSelection(selection)) {
-        $setBlocksType(selection, () => $createHeadingNode("h1"))
-      
+        $setBlocksType(selection, () => $createHeadingNode(tag))
       }
     })
   }
-  return <button className="heading-btn" onClick={onClick}>Heading</button>
+  // return<button className="heading-btn" onClick={onClick}>Heading</button>
+  return (
+    <>{["h1",'h2','h3'].map(tag => (
+      <button key={tag} className="heading-btn" onClick={() => onClick(tag)}>{tag.toUpperCase()}</button>
+    ))}</>
+  )
 }
 
 export default function Editor() {
@@ -46,12 +81,13 @@ export default function Editor() {
     namespace: 'MyEditor',
     theme,
     onError,
-    nodes: [HeadingNode]
+    nodes: [HeadingNode, ListNode, ListItemNode]
   };
 
   return (
     <LexicalComposer initialConfig={initialConfig}>
-      <HeadingPlugin />
+      
+      <ToolbarPlugin />
       <RichTextPlugin
         contentEditable={
           <ContentEditable
@@ -62,6 +98,7 @@ export default function Editor() {
         }
         ErrorBoundary={LexicalErrorBoundary}
       />
+      <ListPlugin />
       <HistoryPlugin />
       <AutoFocusPlugin />
     </LexicalComposer>
