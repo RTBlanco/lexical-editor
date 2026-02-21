@@ -1,6 +1,6 @@
-# Lexical Editor (React + Vite)
+# Lexical Editor
 
-A small playground project for experimenting with **Meta’s Lexical** rich-text editor inside a **React + Vite** app. It includes a basic editor setup with common Lexical plugins plus simple toolbar actions for **headings (H1–H3)** and **lists (ordered + unordered)**. ([GitHub][1])
+A small playground project for experimenting with **Meta’s Lexical** rich-text editor inside a **React** app. It includes a basic editor setup with common Lexical plugins plus simple toolbar actions for **headings (H1–H3)** and **lists (ordered + unordered)**. ([GitHub][1])
 
 ---
 
