@@ -28,7 +28,6 @@ function onError(error) {
 }
 
 function ToolbarPlugin() {
-  // const [editor] = useLexicalComposerContext()
 
   return(
     <div className="toolbar-wrapper">
@@ -48,7 +47,7 @@ function ListToolbarPlugin() {
 
     editor.dispatchCommand(INSERT_UNORDERED_LIST_COMMAND, undefined)
   }
-  // return<button className="heading-btn" onClick={onClick}>Heading</button>
+
   return (
     <>{["ol", "ul"].map(tag => (
       <button key={tag} className="heading-btn" onClick={() => onClick(tag)}>{tag.toUpperCase()}</button>
@@ -60,15 +59,13 @@ function HeadingPlugin() {
   const [editor] = useLexicalComposerContext()
   const onClick = (tag) => {
     editor.update(() => {
-      // const root = $getRoot()
-      // root.append($createHeadingNode('h1').append($createTextNode("Hello World")))
       const selection = $getSelection();
       if ($isRangeSelection(selection)) {
         $setBlocksType(selection, () => $createHeadingNode(tag))
       }
     })
   }
-  // return<button className="heading-btn" onClick={onClick}>Heading</button>
+
   return (
     <>{["h1",'h2','h3'].map(tag => (
       <button key={tag} className="heading-btn" onClick={() => onClick(tag)}>{tag.toUpperCase()}</button>
