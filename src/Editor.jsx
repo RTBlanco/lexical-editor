@@ -10,8 +10,11 @@ import {LexicalErrorBoundary} from '@lexical/react/LexicalErrorBoundary';
 import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext';
 import {HeadingNode, $createHeadingNode} from "@lexical/rich-text"
 import {$setBlocksType} from "@lexical/selection"
-import { INSERT_ORDERED_LIST_COMMAND, INSERT_UNORDERED_LIST_COMMAND, ListItemNode, ListNode } from "@lexical/list"
+import { ListItemNode, ListNode } from "@lexical/list"
 import { ListPlugin } from '@lexical/react/LexicalListPlugin';
+
+// toolbar 
+import ToolbarPlugin from './Editor/ToolBar';
 
 const theme = {
   // Theme styling goes here
@@ -27,51 +30,6 @@ function onError(error) {
   console.error(error);
 }
 
-function ToolbarPlugin() {
-
-  return(
-    <div className="toolbar-wrapper">
-      <HeadingPlugin />
-      <ListToolbarPlugin />
-    </div>
-  )
-}
-
-function ListToolbarPlugin() {
-  const [editor] = useLexicalComposerContext()
-  const onClick = (tag) => {
-    if ( tag === "ol") {
-      editor.dispatchCommand(INSERT_ORDERED_LIST_COMMAND, undefined);
-      return
-    }
-
-    editor.dispatchCommand(INSERT_UNORDERED_LIST_COMMAND, undefined)
-  }
-
-  return (
-    <>{["ol", "ul"].map(tag => (
-      <button key={tag} className="heading-btn" onClick={() => onClick(tag)}>{tag.toUpperCase()}</button>
-    ))}</>
-  )
-}
-
-function HeadingPlugin() {
-  const [editor] = useLexicalComposerContext()
-  const onClick = (tag) => {
-    editor.update(() => {
-      const selection = $getSelection();
-      if ($isRangeSelection(selection)) {
-        $setBlocksType(selection, () => $createHeadingNode(tag))
-      }
-    })
-  }
-
-  return (
-    <>{["h1",'h2','h3'].map(tag => (
-      <button key={tag} className="heading-btn" onClick={() => onClick(tag)}>{tag.toUpperCase()}</button>
-    ))}</>
-  )
-}
 
 export default function Editor() {
   const initialConfig = {
