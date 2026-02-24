@@ -3,7 +3,7 @@ import { $getSelection, $isRangeSelection} from 'lexical';
 import { $setBlocksType } from "@lexical/selection"
 import { $createHeadingNode } from "@lexical/rich-text"
 
-export function HeadingPlugin() {
+export default function HeadingPlugin() {
   const [editor] = useLexicalComposerContext()
   const onClick = (tag) => {
     editor.update(() => {
