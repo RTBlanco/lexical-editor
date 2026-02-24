@@ -6,7 +6,7 @@ export default function App() {
       <div id="title">
         <h1>Lexical Editor</h1>
       </div>
-      <Editor />
+      <Editor id="my-editor"/>
     </>
   )
 }
