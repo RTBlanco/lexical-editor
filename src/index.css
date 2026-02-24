@@ -1,26 +1,26 @@
+.editor-container {
+  position: relative; 
+}
+
 .contentEditable {
   height: 300px;
-  padding: 0 8px;
-  border: 1px solid black ;
+  padding: 10px;
+  border: 1px solid black;
+  display: block;
+  min-height: 100px;
+  font: medium sans-serif;
+  overflow: auto;
+  resize: vertical;
+  outline: none;
+  white-space: pre-wrap;
 }
+
 
 .placeholder {
   position: absolute;
-  top: 220px;
-  padding-left: 8px;
-}
-
-#root {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-}
-
-#title {
-  margin-bottom: 100px;
-  align-self: center;
-}
-
-.heading-btn {
-  width: 100px;
+  top: 28px;       
+  left: 10px;
+  color: #b3b3b3;
+  pointer-events: none;
+  user-select: none;
 }
