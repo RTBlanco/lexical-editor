@@ -16,7 +16,7 @@ export function HeadingPlugin() {
 
   return (
     <>{["h1",'h2','h3'].map(tag => (
-      <button key={tag} className="heading-btn" onClick={() => onClick(tag)}>{tag.toUpperCase()}</button>
+      <button key={tag} className="toolbar-btn" onClick={() => onClick(tag)}>{tag.toUpperCase()}</button>
     ))}</>
   )
 }
