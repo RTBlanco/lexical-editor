@@ -1,15 +1,10 @@
-import {$createTextNode, $getRoot, $getSelection, $isRangeSelection} from 'lexical';
-import {useEffect} from 'react';
-
 import {AutoFocusPlugin} from '@lexical/react/LexicalAutoFocusPlugin';
 import {LexicalComposer} from '@lexical/react/LexicalComposer';
 import {RichTextPlugin} from '@lexical/react/LexicalRichTextPlugin';
 import {ContentEditable} from '@lexical/react/LexicalContentEditable';
 import {HistoryPlugin} from '@lexical/react/LexicalHistoryPlugin';
 import {LexicalErrorBoundary} from '@lexical/react/LexicalErrorBoundary';
-import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext';
-import {HeadingNode, $createHeadingNode} from "@lexical/rich-text"
-import {$setBlocksType} from "@lexical/selection"
+import {HeadingNode} from "@lexical/rich-text"
 import { ListItemNode, ListNode } from "@lexical/list"
 import { ListPlugin } from '@lexical/react/LexicalListPlugin';
 
@@ -39,20 +34,19 @@ export default function Editor() {
     nodes: [HeadingNode, ListNode, ListItemNode]
   };
 
+  
   return (
     <LexicalComposer initialConfig={initialConfig}>
-      
       <ToolbarPlugin />
-      <RichTextPlugin
-        contentEditable={
-          <ContentEditable
-            aria-placeholder={'Enter some text...'}
-            placeholder={<div className='placeholder'>Enter some text...</div>}
-            className='contentEditable'
-          />
-        }
-        ErrorBoundary={LexicalErrorBoundary}
-      />
+
+      <div className="editor-container">
+        <RichTextPlugin
+          contentEditable={<ContentEditable className="contentEditable" />}
+          placeholder={<div className="placeholder">Enter some text...</div>}
+          ErrorBoundary={LexicalErrorBoundary}
+        />
+      </div>
+
       <ListPlugin />
       <HistoryPlugin />
       <AutoFocusPlugin />
