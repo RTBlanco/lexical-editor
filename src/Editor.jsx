@@ -7,6 +7,7 @@ import {LexicalErrorBoundary} from '@lexical/react/LexicalErrorBoundary';
 import {HeadingNode} from "@lexical/rich-text"
 import { ListItemNode, ListNode } from "@lexical/list"
 import { ListPlugin } from '@lexical/react/LexicalListPlugin';
+import './editor.css'
 
 // toolbar 
 import ToolbarPlugin from './Editor/ToolBar';
@@ -26,7 +27,7 @@ function onError(error) {
 }
 
 
-export default function Editor() {
+export default function Editor({id}) {
   const initialConfig = {
     namespace: 'MyEditor',
     theme,
@@ -36,21 +37,25 @@ export default function Editor() {
 
   
   return (
-    <LexicalComposer initialConfig={initialConfig}>
-      <ToolbarPlugin />
+    <div id={id}>
+      <LexicalComposer initialConfig={initialConfig}>
+        <div className="editor-wrapper">
 
-      <div className="editor-container">
-        <RichTextPlugin
-          contentEditable={<ContentEditable className="contentEditable" />}
-          placeholder={<div className="placeholder">Enter some text...</div>}
-          ErrorBoundary={LexicalErrorBoundary}
-        />
-      </div>
+          <ToolbarPlugin />
+          <div className="editor-text-container">
+            <RichTextPlugin
+              contentEditable={<ContentEditable className="contentEditable" />}
+              placeholder={<div className="placeholder">Enter some text...</div>}
+              ErrorBoundary={LexicalErrorBoundary}
+            />
+          </div>
 
-      <ListPlugin />
-      <HistoryPlugin />
-      <AutoFocusPlugin />
-    </LexicalComposer>
+        </div>
+        <ListPlugin />
+        <HistoryPlugin />
+        <AutoFocusPlugin />
+      </LexicalComposer>
+    </div>
   );
 }
 
