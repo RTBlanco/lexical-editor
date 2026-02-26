@@ -1,3 +1,21 @@
-#my-editor {
-  /* border: 1px dashed red; */
+body {
+  padding: 0;
+  margin: 0;
+  background-color: #eaded2;
+}
+
+#root {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  margin-top: 10%;
+  flex-direction: column;
+}
+
+#title {
+  display: flex;
+  justify-content: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 2em;
+  color: #1C1C1E;
 }
