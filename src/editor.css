@@ -149,11 +149,11 @@
   font-family: var(--font-ui);
 }
 
-.contentEditable strong {
+.contentEditable .textBold {
   font-weight: 600;
 }
 
-.contentEditable em {
+.contentEditable .textItalic {
   font-style: italic;
 }
 

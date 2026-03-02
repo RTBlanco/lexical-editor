@@ -14,7 +14,9 @@ import ToolbarPlugin from './Editor/ToolBar';
 
 const theme = {
   text: {
-    underline: "underline"
+    underline: "underline",
+    bold: "textBold",
+    italic: "textItalic",
   }
 }
 
