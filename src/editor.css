@@ -172,22 +172,6 @@
   color: var(--accent);
 }
 
-/* ============================================
-   SCROLLBAR
-   ============================================ */
-
-.editor-text-container::-webkit-scrollbar {
-  width: 5px;
-}
-
-.editor-text-container::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.editor-text-container::-webkit-scrollbar-thumb {
-  background: rgba(60, 60, 67, 0.2);
-  border-radius: 99px;
-}
 
 /* ============================================
    DARK MODE
