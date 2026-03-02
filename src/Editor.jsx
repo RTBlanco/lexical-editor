@@ -13,8 +13,6 @@ import './editor.css'
 import ToolbarPlugin from './Editor/ToolBar';
 
 const theme = {
-  // Theme styling goes here
-  //...
   text: {
     underline: "underline"
   }
