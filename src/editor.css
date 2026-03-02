@@ -157,7 +157,7 @@
   font-style: italic;
 }
 
-.contentEditable u {
+.contentEditable span[style*="text-decoration: underline"] {
   text-decoration-color: var(--accent);
   text-underline-offset: 2px;
 }
