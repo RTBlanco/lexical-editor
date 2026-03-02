@@ -15,6 +15,9 @@ import ToolbarPlugin from './Editor/ToolBar';
 const theme = {
   // Theme styling goes here
   //...
+  text: {
+    underline: "underline"
+  }
 }
 
 // Catch any errors that occur during Lexical updates and log them
@@ -32,7 +35,7 @@ export default function Editor({id}) {
     namespace: 'MyEditor',
     theme,
     onError,
-    nodes: [HeadingNode, ListNode, ListItemNode]
+    nodes: [HeadingNode, ListNode, ListItemNode ]
   };
 
   
