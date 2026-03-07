@@ -41,23 +41,25 @@ export default function Editor({id}) {
   
   return (
     <div id={id}>
-      <LexicalComposer initialConfig={initialConfig}>
-        <div className="editor-wrapper">
+      <form action="">
+        <LexicalComposer initialConfig={initialConfig}>
+          <div className="editor-wrapper">
 
-          <ToolbarPlugin />
-          <div className="editor-text-container">
-            <RichTextPlugin
-              contentEditable={<ContentEditable className="contentEditable" />}
-              placeholder={<div className="placeholder">Enter some text...</div>}
-              ErrorBoundary={LexicalErrorBoundary}
-            />
+            <ToolbarPlugin />
+            <div className="editor-text-container">
+              <RichTextPlugin
+                contentEditable={<ContentEditable className="contentEditable" />}
+                placeholder={<div className="placeholder">Enter some text...</div>}
+                ErrorBoundary={LexicalErrorBoundary}
+              />
+            </div>
+
           </div>
-
-        </div>
-        <ListPlugin />
-        <HistoryPlugin />
-        <AutoFocusPlugin />
-      </LexicalComposer>
+          <ListPlugin />
+          <HistoryPlugin />
+          <AutoFocusPlugin />
+        </LexicalComposer>
+      </form>
     </div>
   );
 }
