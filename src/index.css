@@ -19,3 +19,8 @@ body {
   font-size: 2em;
   color: #1C1C1E;
 }
+
+#my-editor {
+  width: 50vw;
+  align-self: center;
+}
