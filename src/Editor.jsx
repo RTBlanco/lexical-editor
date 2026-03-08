@@ -59,6 +59,8 @@ export default function Editor({id}) {
           <HistoryPlugin />
           <AutoFocusPlugin />
         </LexicalComposer>
+
+        <button className='editor-btn'> Enter </button>
       </form>
     </div>
   );
