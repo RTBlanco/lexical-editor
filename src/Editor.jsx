@@ -38,10 +38,15 @@ export default function Editor({id}) {
     nodes: [HeadingNode, ListNode, ListItemNode ]
   };
 
+
+  function handleOnSubmit(e) {
+    e.preventDefault();
+    console.log(e)    
+  }
   
   return (
     <div id={id}>
-      <form action="">
+      <form action="" onSubmit={handleOnSubmit}>
         <LexicalComposer initialConfig={initialConfig}>
           <div className="editor-wrapper">
 
