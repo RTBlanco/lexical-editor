@@ -43,7 +43,7 @@ export default function Editor({id}) {
     e.preventDefault();
     console.log(e)    
   }
-  
+  // need to be able to display the entered info when submited 
   return (
     <div id={id}>
       <form action="" onSubmit={handleOnSubmit}>
