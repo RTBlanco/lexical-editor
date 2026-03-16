@@ -43,7 +43,8 @@ export default function Editor({id}) {
     e.preventDefault();
     console.log(e)    
   }
-  // need to be able to display the entered info when submited 
+  // need to be able to display the entered info when submited
+  // todo: make it possbible to save the html like. <br> and <strong> 
   return (
     <div id={id}>
       <form action="" onSubmit={handleOnSubmit}>
