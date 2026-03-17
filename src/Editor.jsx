@@ -44,7 +44,7 @@ export default function Editor({id}) {
     console.log(e)    
   }
   // need to be able to display the entered info when submited
-  // todo: make it possbible to save the html like. <br> and <strong> 
+  // todo: make it possbible to save the html like. <br>, <italics> and <strong> 
   return (
     <div id={id}>
       <form action="" onSubmit={handleOnSubmit}>
